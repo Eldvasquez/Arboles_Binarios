@@ -196,9 +196,10 @@ public class Vistaa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
+       //LLama a la funcion insertar y lo inserta en el dato
         try {
-            int dato = Integer.parseInt(txtdato.getText());
-            if (this.simulador.insertar(dato)) {
+            int dato = Integer.parseInt(txtdato.getText()); // convierte la variable txtdato en entero
+            if (this.simulador.insertar(dato)) { 
                 JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
                 this.inicializar(true);
                 
@@ -211,7 +212,7 @@ public class Vistaa extends javax.swing.JFrame {
     }//GEN-LAST:event_botonInsertarActionPerformed
 
     private void InOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InOrdenActionPerformed
-        // TODO add your handling code here:
+       //LLama a la clase simulador y empieza un recorrido de forma InOrden
         String recorrido = null;
         recorrido = this.simulador.inOrden();
         
@@ -220,7 +221,7 @@ public class Vistaa extends javax.swing.JFrame {
     }//GEN-LAST:event_InOrdenActionPerformed
 
     private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
-        // TODO add your handling code here:
+        //LLama a la clase simulador y empieza un recorrido de forma PreOrden
         String recorrido = null;
         recorrido = this.simulador.preOrden();
         
@@ -229,7 +230,7 @@ public class Vistaa extends javax.swing.JFrame {
     }//GEN-LAST:event_PreOrdenActionPerformed
 
     private void PostOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostOrdenActionPerformed
-        // TODO add your handling code here:
+        //LLama a la clase simulador y empieza un recorrido de forma PostOrden
         String recorrido = null;
         recorrido = this.simulador.postOrden();
         
@@ -241,6 +242,7 @@ public class Vistaa extends javax.swing.JFrame {
         this.repintarArbol();
     }
     private void repintarArbol() {
+        //Se arma graficamente el arbol cuando se inserta llamando a la clase simulador
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame2.getBounds();
         this.jInternalFrame2 = null;
