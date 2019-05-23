@@ -15,15 +15,13 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author
+ * @author Jorge Ivan Vasquez Sosa (0901-16-4067)
  */
 public class Vistaa extends javax.swing.JFrame {
 
-    private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
+    private arbolBalanceado Avl = new arbolBalanceado();
 
-    /**
-     * Creates new form Vista
-     */
+    
     public Vistaa() {
         initComponents();
         this.inicializar(false);
@@ -196,43 +194,33 @@ public class Vistaa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
-       //LLama a la funcion insertar y lo inserta en el dato
-        try {
-            int dato = Integer.parseInt(txtdato.getText()); // convierte la variable txtdato en entero
-            if (this.simulador.insertar(dato)) { 
-                JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
-                this.inicializar(true);
-                
+        if (this.Avl.insertar(Integer.parseInt(txtdato.getText()))) {                
+                this.inicializar(true);             
                 complementos();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
-
+                
         }
     }//GEN-LAST:event_botonInsertarActionPerformed
 
     private void InOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InOrdenActionPerformed
-       //LLama a la clase simulador y empieza un recorrido de forma InOrden
+        // TODO add your handling code here:
         String recorrido = null;
-        recorrido = this.simulador.inOrden();
+        recorrido = this.Avl.inOrden();
         
         this.impresion.setText("");
         this.impresion.setText(recorrido);
     }//GEN-LAST:event_InOrdenActionPerformed
 
     private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
-        //LLama a la clase simulador y empieza un recorrido de forma PreOrden
         String recorrido = null;
-        recorrido = this.simulador.preOrden();
+        recorrido = this.Avl.preOrden();
         
         this.impresion.setText("");
         this.impresion.setText(recorrido);
     }//GEN-LAST:event_PreOrdenActionPerformed
 
     private void PostOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostOrdenActionPerformed
-        //LLama a la clase simulador y empieza un recorrido de forma PostOrden
         String recorrido = null;
-        recorrido = this.simulador.postOrden();
+        recorrido = this.Avl.postOrden();
         
         this.impresion.setText("");
         this.impresion.setText(recorrido);
@@ -242,7 +230,6 @@ public class Vistaa extends javax.swing.JFrame {
         this.repintarArbol();
     }
     private void repintarArbol() {
-        //Se arma graficamente el arbol cuando se inserta llamando a la clase simulador
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame2.getBounds();
         this.jInternalFrame2 = null;
@@ -251,7 +238,7 @@ public class Vistaa extends javax.swing.JFrame {
         this.jInternalFrame2.setVisible(true);
         this.jInternalFrame2.setBounds(tamaño);
         this.jInternalFrame2.setEnabled(false);
-        this.jInternalFrame2.add(this.simulador.getDibujo(), BorderLayout.CENTER);
+        this.jInternalFrame2.add(this.Avl.getDibujo(), BorderLayout.CENTER);
     }
 
     /**

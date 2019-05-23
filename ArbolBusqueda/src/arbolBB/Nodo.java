@@ -1,23 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package arbolBB;
 
 /**
  *
- * @author
+ * @author Jorge Ivan Vasquez Sosa (0901-16-4067)
  */
 public class Nodo {
-    private int dato;
-    private Nodo izq,der;
+    
+  public int dato , ve;
+  public Nodo izq,der;
 
-    public Nodo(int dato, Nodo izq, Nodo der) {
+    public Nodo(int dato, Nodo izq , Nodo der) {
         this.dato = dato;
+        this.ve = 0;
         this.izq = izq;
         this.der = der;
     }
+
+    
 
     public int getDato() {
         return dato;
